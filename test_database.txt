@@ -1,0 +1,36 @@
+Para o banco de dados abaixo, realize as tarefas solicitadas: (Se desejar, pode encaminhar link para solução no GitHub, preferimos).
+
+a) Escreva um SELECT que retorne o nome_estado com valor ‘Paraná’.
+
+b) Escreva um SELECT que retorne todas as tuplas com o “nome_estado” e o “nome_pais”.
+
+c) Altere a tabela “pais” para adicionar um novo campo de nome “sigla” com limite para 2 caracteres. Escreva abaixo o comando utilizado para realizar esta tarefa.
+
+d) Crie uma nova tabela chamada “cidade” com as colunas “id”, “nome_cidade” e “id_estado” sendo a coluna “id” uma Primary Key com Auto Increment e “id_estado” uma Foreign Key da coluna “id” da tabela “estado”.
+
+
+
+
+
+
+respostas:
+
+a)
+SELECT nome_estado FROM estado WHERE id = 3 ;
+
+
+
+b)
+SELECT nome_estado, nome_pais FROM estado, pais;
+
+
+
+c)
+ALTER TABLE  pais  ADD  sigla  VARCHAR(2) NOT NULL AFTER  nome_pais;
+
+
+
+
+d)
+CREATE TABLE `base_para_teste`.`cidade` ( `id` INT NOT NULL AUTO_INCREMENT , `nome_cidade` VARCHAR(255) NOT NULL , `id_estado` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
+ALTER TABLE `cidade` ADD FOREIGN KEY (`id_estado`) REFERENCES `estado`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
